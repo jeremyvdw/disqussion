@@ -1,0 +1,9 @@
+coverage/
+.DS_Store
+.bundle/
+log/*.log
+pkg/
+doc/*
+.yardcache/*
+.yardoc/*
+spec/.DS_Store
