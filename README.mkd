@@ -2,6 +2,8 @@ The Disqussion Ruby Gem
 ====================
 A Ruby wrapper for the Disqus API
 
+IMPORTANT: This gem is non-usable for production, beta version expected on May 9th 2011
+
 Installation
 ------------
 ``` sh
@@ -10,7 +12,7 @@ gem install disqussion
 
 Documentation
 -------------
-<http://rdoc.info/gems/twitter>
+<http://rdoc.info/gems/disqussion>
 
 Does your project or organization use this gem?
 -----------------------------------------------
@@ -18,14 +20,13 @@ Add it to the [apps](http://github.com/jeremyvdw/disqussion/wiki/apps) wiki!
 
 Continuous Integration
 ----------------------
-[![Build Status](http://travis-ci.org/jnunemaker/twitter.png)](http://travis-ci.org/jnunemaker/twitter)
+[![Build Status](http://travis-ci.org/jeremyvdw/disqussion.png)](http://travis-ci.org/jeremyvdw/disqussion)
 
 What's in 0.1?
 ------------------
 
-
 ```
-The error classes have gone through a transformation to make them consistent with [Disqus's documented response codes](http://disqus.com/api/docs/errors/). These changes should make it easier to rescue from specific errors and take action accordingly. We've also added support for two new classes of error.
+The error classes are consistent with [Disqus's documented response codes](http://disqus.com/api/docs/errors/). These changes should make it easier to rescue from specific errors and take action accordingly. We've also added support for two new classes of error.
 
 <table>
   <thead>
@@ -57,6 +58,7 @@ The error classes have gone through a transformation to make them consistent wit
     </tr>
   </tbody>
 </table>
+```
 
 Here are a few reasons use (and improve) this gem:
 
@@ -140,6 +142,10 @@ Submitting a Pull Request
 7. Run <tt>bundle exec rake spec</tt>. If your changes are not 100% covered, go back to step 6.
 8. Commit and push your changes.
 9. Submit a pull request. Please do not include changes to the gemspec, version, or history file. (If you want to create your own version for some reason, please do so in a separate commit.)
+
+Thanks
+------
+This gem is based on the work by John Nunemaker, Wynn Netherland, Erik Michaels-Ober and Steve Richert on the [Twitter gem](http://github.com/jnunemaker/twitter)
 
 Copyright
 ---------
