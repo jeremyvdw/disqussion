@@ -1,0 +1,19 @@
+{
+  "code": 0, 
+  "response": {
+    "username": "the88", 
+    "about": "", 
+    "name": "the88", 
+    "url": "", 
+    "isFollowing": false, 
+    "isFollowedBy": false, 
+    "profileUrl": "http://disqus.com/the88/", 
+    "emailHash": "bb59f077c9689d923dd856c31dba3098", 
+    "avatar": {
+      "permalink": "http://disqus.com/api/users/avatars/the88.jpg", 
+      "cache": "http://mediacdn.disqus.com/1304545408/images/noavatar92.png"
+    }, 
+    "isAnonymous": false, 
+    "id": "6138058"
+  }
+}
