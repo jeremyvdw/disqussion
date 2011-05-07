@@ -21,7 +21,7 @@ module Disqussion
     
     # Follow a user
     # @accessibility: public key, secret key
-    # @methods: GET
+    # @methods: POST
     # @format: json, jsonp
     # @authenticated: true
     # @limited: false

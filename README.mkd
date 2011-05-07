@@ -78,8 +78,8 @@ Usage Examples
 require "rubygems"
 require "disqussion"
 
-# Get a user's details
-puts Disqussion.details("the88").url
+# Get an application's details
+puts Disqussion::Applications.details("the88").url
 
 # Certain methods require authentication. To get your Disqus credentials,
 # register an app at http://disqus.com/api/applications/
@@ -87,18 +87,6 @@ Disqussion.configure do |config|
   config.api_key = YOUR_API_KEY
   config.api_secret = YOUR_API_SECRET
 end
-
-# Read the most recent tweet in your home timeline
-puts Disqussion.home_timeline.first.text
-
-# Who's your most popular friend?
-puts Disqussion.friends.users.sort{|a, b| a.followers_count <=> b.followers_count}.reverse.first.name
-
-# Who's your most popular follower?
-puts Disqussion.followers.users.sort{|a, b| a.followers_count <=> b.followers_count}.reverse.first.name
-
-# Get your rate limit status
-puts Disqussion.rate_limit_status.remaining_hits.to_s + " Disqussion API request(s) remaining this hour"
 ```
 
 Contributing
