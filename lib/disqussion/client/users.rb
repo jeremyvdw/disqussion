@@ -9,8 +9,8 @@ module Disqussion
     # @param user [Integer, String] A Disqus user ID or screen name.
     # @return [Hashie::Rash] Details on the requested user.
     # @example Return extended information for 'the88'
-    #   Disqus.user("the88")
-    #   Disqus.user(6138058)  # Same as above
+    #   Disqussion::Client.user("the88")
+    #   Disqussion::Client.user(6138058)  # Same as above
     # @see: http://disqus.com/api/3.0/users/details.json
     def details(*args)
       options = args.last.is_a?(Hash) ? args.pop : {}
@@ -28,8 +28,8 @@ module Disqussion
     # @param target [Integer, String] A Disqus user ID or screen name.
     # @return [Hashie::Rash] Details on the requested user.
     # @example Return extended information for 'the88'
-    #   Disqus.follow("the88")
-    #   Disqus.follow(6138058)  # Same as above
+    #   Disqussion::Client.follow("the88")
+    #   Disqussion::Client.follow(6138058)  # Same as above
     # @see: http://disqus.com/api/3.0/users/details.json
     def follow(*args)
       options = args.last.is_a?(Hash) ? args.pop : {}
@@ -92,8 +92,8 @@ module Disqussion
     # @param user [Integer, String] A Disqus user ID or screen name.
     # @return [Hashie::Rash] Details on the requested user.
     # @example Return extended information for 'the88'
-    #   Disqus.unfollow("the88")
-    #   Disqus.unfollow(6138058)  # Same as above
+    #   Disqussion::Client.unfollow("the88")
+    #   Disqussion::Client.unfollow(6138058)  # Same as above
     # @see: http://disqus.com/api/3.0/users/details.json
     def unfollow
       merge_user_into_options!(user, options)

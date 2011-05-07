@@ -1,0 +1,12 @@
+{
+  "code": 0, 
+  "response": {
+    "id": "myforum", 
+    "name": "the88", 
+    "founder": "6138058", 
+    "favicon": {
+      "permalink": "http://disqus.com/api/forums/favicons/atestforum.jpg", 
+      "cache": "http://mediacdn.disqus.com/1304703476/images/favicon-default.png"
+    }
+  }
+}

@@ -14,9 +14,10 @@ RSpec.configure do |config|
   end
 end
 
-def a_get(path)
-  a_request(:get, Disqussion.endpoint + path).
-    with(:query => { :api_secret => Disqussion.api_secret })
+def a_get(path, options = {})
+  options[:query] ||= {}
+  options[:query].merge! :api_secret => Disqussion.api_secret
+  a_request(:get, Disqussion.endpoint + path).with(options)
 end
 
 def a_post(path, options = {})
@@ -25,9 +26,10 @@ def a_post(path, options = {})
   a_request(:post, Disqussion.endpoint + path).with(options)
 end
 
-def stub_get(path)
-  stub_request(:get, Disqussion.endpoint + path).
-    with(:query => { :api_secret => Disqussion.api_secret })
+def stub_get(path, options = {})
+  options[:query] ||= {}
+  options[:query].merge! :api_secret => Disqussion.api_secret
+  stub_request(:get, Disqussion.endpoint + path).with(options)
 end
 
 def stub_post(path, options = {})

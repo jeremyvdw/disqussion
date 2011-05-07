@@ -25,7 +25,6 @@ Continuous Integration
 What's in 0.1?
 ------------------
 
-```
 The error classes are consistent with [Disqus's documented response codes](http://disqus.com/api/docs/errors/). These changes should make it easier to rescue from specific errors and take action accordingly. We've also added support for two new classes of error.
 
 <table>
@@ -58,7 +57,6 @@ The error classes are consistent with [Disqus's documented response codes](http:
     </tr>
   </tbody>
 </table>
-```
 
 Here are a few reasons use (and improve) this gem:
 
