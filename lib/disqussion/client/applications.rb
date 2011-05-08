@@ -1,7 +1,6 @@
 module Disqussion
   class Applications < Client
     # Returns the API usage per day for this application.
-    # 
     # @accessibility: public key, secret key
     # @methods: GET
     # @format: json, jsonp
