@@ -78,15 +78,15 @@ Usage Examples
 require "rubygems"
 require "disqussion"
 
-# Get an application's details
-puts Disqussion::Applications.details("the88").url
-
 # Certain methods require authentication. To get your Disqus credentials,
 # register an app at http://disqus.com/api/applications/
 Disqussion.configure do |config|
   config.api_key = YOUR_API_KEY
   config.api_secret = YOUR_API_SECRET
 end
+
+# Get an application's usage details
+puts Disqussion::Client.applications.listUsage("the88")
 ```
 
 Contributing
