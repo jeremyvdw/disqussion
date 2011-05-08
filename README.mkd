@@ -50,11 +50,11 @@ Error details from Disqus API are encapsulated in HTTP response.
     </tr>
     <tr>
       <td><tt>404</tt></td>
-      <td><tt>Disqus::NotFound</tt></td>
+      <td><tt>Disqussion::NotFound</tt></td>
     </tr>
     <tr>
       <td><tt>500</tt></td>
-      <td><tt>Disqus::InternalServerError</tt></td>
+      <td><tt>Disqussion::InternalServerError</tt></td>
     </tr>
   </tbody>
 </table>
