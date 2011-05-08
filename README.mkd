@@ -25,7 +25,8 @@ Continuous Integration
 What's in 0.1?
 ------------------
 
-The error classes are consistent with [Disqus's documented response codes](http://disqus.com/api/docs/errors/). These changes should make it easier to rescue from specific errors and take action accordingly. We've also added support for two new classes of error.
+The error classes are consistent with [Disqus's documented response codes](http://disqus.com/api/docs/errors/).
+Error details from Disqus API are encapsulated in HTTP response.
 
 <table>
   <thead>
@@ -37,15 +38,15 @@ The error classes are consistent with [Disqus's documented response codes](http:
   <tbody>
     <tr>
       <td><tt>400</tt></td>
-      <td><tt>Disqus::</tt></td>
+      <td><tt>Disqussion::BadRequest</tt></td>
     </tr>
     <tr>
       <td><tt>401</tt></td>
-      <td><tt>Disqus::</tt></td>
+      <td><tt>Disqussion::Unauthorized</tt></td>
     </tr>
     <tr>
       <td><tt>403</tt></td>
-      <td><tt>Disqus::</tt></td>
+      <td><tt>Disqussion::Forbidden</tt></td>
     </tr>
     <tr>
       <td><tt>404</tt></td>
@@ -61,10 +62,9 @@ The error classes are consistent with [Disqus's documented response codes](http:
 Here are a few reasons use (and improve) this gem:
 
 * Full Ruby 1.9 compatibility: All code and specs now work in the latest version of Ruby
-* Support for HTTP proxies: Access Disqus from China, Iran, or inside your office firewall
-* Support for multiple HTTP adapters: NetHttp (default), em-net-http, Typhoeus, Patron, or ActionDispatch
+* Support for HTTP proxies
+* Support for multiple HTTP adapters: NetHttp (default), em-net-http (async), Typhoeus, Patron, or ActionDispatch
 * SSL: On by default for increased [speed](http://gist.github.com/652330) and security
-* Improved error handling: More easily rescue from rate-limit errors or fail whales
 
 Help! I'm getting: "Did not recognize your engine specification. Please specify either a symbol or a class. (RuntimeError)"
 ---------------------------------------------------------------------------------------------------------------------------
