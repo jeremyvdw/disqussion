@@ -7,7 +7,7 @@ module Disqussion
     # @authenticated: true
     # @limited: false
     # @param thread [Array, Integer] allows multiple. Looks up a thread by ID. You must be a moderator on the selected thread's forum. You may pass use the 'ident' or 'link' query types instead of an ID by including 'forum'.
-    # @return [Hashie::Rash] Details on the requested user.
+    # @return [Hashie::Rash] ID of the closed thread.
     # @option options [String] :forum. Defaults to null. Looks up a forum by ID (aka short name). You must be a moderator on the selected forum.
     # @example Closes thread 12345678
     #   Disqussion::Client.threads.close(12345678)
@@ -25,7 +25,7 @@ module Disqussion
     # @format: json, jsonp
     # @authenticated: false
     # @limited: false
-    # @return [Hashie::Rash] Details on the requested list of categories.
+    # @return [Hashie::Rash] Details on the requested threads.
     # @param thread [Integer] Looks up a thread by ID. You must be a moderator on the selected thread's forum. You may pass use the 'ident' or 'link' query types instead of an ID by including 'forum'.
     # @param options [Hash] A customizable set of options.
     # @option options [String, Array] :related allows multiple. Defaults to []. You may specify relations to include with your response. Choices: forum, author, category
@@ -46,7 +46,7 @@ module Disqussion
     # @format: json, jsonp, rss
     # @authenticated: false
     # @limited: false
-    # @return [Hashie::Rash] Details on the requested list of categories.
+    # @return [Hashie::Rash] List of threads.
     # @param options [Hash] A customizable set of options.
     # @option options [Integer] :category. Defaults to null
     # @option options [String] :forum. Defaults to null. Looks up a forum by ID (aka short name)
@@ -72,7 +72,7 @@ module Disqussion
     # @format: json, jsonp, rss
     # @authenticated: false
     # @limited: false
-    # @return [Hashie::Rash] Details on the requested list of categories.
+    # @return [Hashie::Rash] List of the most liked threads.
     # @param options [Hash] A customizable set of options.
     # @option options [Integer] :category. Defaults to null
     # @option options [String] :forum. Defaults to null. Looks up a forum by ID (aka short name)
@@ -94,7 +94,7 @@ module Disqussion
     # @format: json, jsonp, rss
     # @authenticated: false
     # @limited: false
-    # @return [Hashie::Rash] Details on the requested list of categories.
+    # @return [Hashie::Rash] List of threads post.
     # @param thread [Integer] Looks up a thread by ID. You must be a moderator on the selected thread's forum. You may pass use the 'ident' or 'link' query types instead of an ID by including 'forum'.
     # @param options [Hash] A customizable set of options.
     # @option options [String] :forum. Defaults to null. Looks up a forum by ID (aka short name)
@@ -122,7 +122,7 @@ module Disqussion
     # @authenticated: true
     # @limited: false
     # @param thread [Array, Integer] allows multiple. Looks up a thread by ID. You must be a moderator on the selected thread's forum. You may pass use the 'ident' or 'link' query types instead of an ID by including 'forum'.
-    # @return [Hashie::Rash] Details on the requested user.
+    # @return [Hashie::Rash]  ID of the opened thread.
     # @option options [String] :forum. Defaults to null. Looks up a forum by ID (aka short name). You must be a moderator on the selected forum.
     # @example Opens thread 12345678
     #   Disqussion::Client.threads.open(12345678)
@@ -141,7 +141,7 @@ module Disqussion
     # @authenticated: true
     # @limited: false
     # @param thread [Array, Integer] allows multiple. Looks up a thread by ID. You must be a moderator on the selected thread's forum. You may pass use the 'ident' or 'link' query types instead of an ID by including 'forum'.
-    # @return [Hashie::Rash] Details on the requested user.
+    # @return [Hashie::Rash] ID of the deleted thread.
     # @option options [String] :forum. Defaults to null. Looks up a forum by ID (aka short name). You must be a moderator on the selected forum.
     # @example Removes thread 12345678
     #   Disqussion::Client.threads.remove(12345678)
@@ -160,7 +160,7 @@ module Disqussion
     # @authenticated: true
     # @limited: false
     # @param thread [Array, Integer] allows multiple. Looks up a thread by ID. You must be a moderator on the selected thread's forum. You may pass use the 'ident' or 'link' query types instead of an ID by including 'forum'.
-    # @return [Hashie::Rash] Details on the requested user.
+    # @return [Hashie::Rash] ID of the restored thread.
     # @option options [String] :forum. Defaults to null. Looks up a forum by ID (aka short name). You must be a moderator on the selected forum.
     # @example Removes thread 12345678
     #   Disqussion::Client.threads.restore(12345678)
@@ -180,7 +180,7 @@ module Disqussion
     # @limited: false
     # @param thread [Integer] Choices: -1, 0, 1
     # @param thread [Integer] Looks up a thread by ID. You may pass use the 'ident' or 'link' query types instead of an ID by including 'forum'.
-    # @return [Hashie::Rash] Details on the requested user.
+    # @return [Hashie::Rash] Details on the thread.
     # @option options [String] :forum. Defaults to null. Looks up a forum by ID (aka short name). You must be a moderator on the selected forum.
     # @example Removes thread 12345678
     #   Disqussion::Client.threads.vote(1, 12345678)

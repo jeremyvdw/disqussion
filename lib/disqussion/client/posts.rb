@@ -6,7 +6,7 @@ module Disqussion
     # @format: json, jsonp
     # @authenticated: true
     # @limited: false
-    # @param post [Integer] allows multiple. Looks up a post by ID. You must be a moderator on the selected post's forum.
+    # @param post [Array, Integer] allows multiple. Looks up a post by ID. You must be a moderator on the selected post's forum.
     # @return [Hashie::Rash] Approved post id
     # @example Approves post with ID 198230
     #   Disqussion::Client.posts.approve(198230)
@@ -68,7 +68,7 @@ module Disqussion
     # @format: json, jsonp
     # @authenticated: true
     # @limited: false
-    # @param post [Integer] allows multiple. Looks up a post by ID.
+    # @param post [Array, Integer] allows multiple. Looks up a post by ID.
     # @return [Hashie::Rash] Highlighted post id
     # @example Highlights post with ID 198230
     #   Disqussion::Client.posts.highlight(198230)
@@ -104,6 +104,114 @@ module Disqussion
     def list(*args)
       options = args.last.is_a?(Hash) ? args.pop : {}
       response = get('posts/list', options)
+    end
+    
+    # Deletes the requested post(s).
+    # @accessibility: public key, secret key
+    # @methods: POST
+    # @format: json, jsonp
+    # @authenticated: true
+    # @limited: false
+    # @param post [Array, Integer] allows multiple. Looks up a post by ID.
+    # @return [Hashie::Rash] Removed post id
+    # @example Deletes post with ID 198230
+    #   Disqussion::Client.posts.remove(198230)
+    # @see: http://disqus.com/api/3.0/posts/remove.json
+    def remove(*args)
+      options = args.last.is_a?(Hash) ? args.pop : {}
+      options[:post] = args.first
+      response = post('posts/remove', options)
+    end
+    
+    # Reports a post (flagging).
+    # @accessibility: public key, secret key
+    # @methods: POST
+    # @format: json, jsonp
+    # @authenticated: false
+    # @limited: false
+    # @param post [Integer] Looks up a post by ID.
+    # @return [Hashie::Rash] Reported post id
+    # @example Deletes post with ID 198230
+    #   Disqussion::Client.posts.report(198230)
+    # @see: http://disqus.com/api/3.0/posts/report.json
+    def report(*args)
+      options = args.last.is_a?(Hash) ? args.pop : {}
+      options[:post] = args.first
+      response = post('posts/report', options)
+    end
+    
+    # Undeletes the requested post(s).
+    # @accessibility: public key, secret key
+    # @methods: POST
+    # @format: json, jsonp
+    # @authenticated: true
+    # @limited: false
+    # @param post [Array, Integer] allows multiple. Looks up a post by ID.
+    # @return [Hashie::Rash] restored post id
+    # @example Undeletes post with ID 198230
+    #   Disqussion::Client.posts.restore(198230)
+    # @see: http://disqus.com/api/3.0/posts/restore.json
+    def restore(*args)
+      options = args.last.is_a?(Hash) ? args.pop : {}
+      options[:post] = args.first
+      response = post('posts/restore', options)
+    end
+    
+    # Marks the requested post(s) as spam.
+    # @accessibility: public key, secret key
+    # @methods: POST
+    # @format: json, jsonp
+    # @authenticated: true
+    # @limited: false
+    # @param post [Array, Integer] allows multiple. Looks up a post by ID.
+    # @return [Hashie::Rash] Marked as spam post id
+    # @example Reports as spam post with ID 198230
+    #   Disqussion::Client.posts.spam(198230)
+    # @see: http://disqus.com/api/3.0/posts/spam.json
+    def spam(*args)
+      options = args.last.is_a?(Hash) ? args.pop : {}
+      options[:post] = args.first
+      response = post('posts/spam', options)
+    end
+    
+    # Unhighlights the requested post(s).
+    # @accessibility: public key, secret key
+    # @methods: POST
+    # @format: json, jsonp
+    # @authenticated: true
+    # @limited: false
+    # @param post [Array, Integer] allows multiple. Looks up a post by ID.
+    # @return [Hashie::Rash] Unhighlighted post id
+    # @example Unhighlights the requested post(s).
+    #   Disqussion::Client.posts.unhighlight(198230)
+    # @see: http://disqus.com/api/3.0/posts/unhighlight.json
+    def unhighlight(*args)
+      options = args.last.is_a?(Hash) ? args.pop : {}
+      options[:post] = args.first
+      response = post('posts/unhighlight', options)
+    end
+    
+    # Register a vote for a post.
+    # @accessibility: public key, secret key
+    # @methods: POST
+    # @format: json, jsonp
+    # @authenticated: true
+    # @limited: false
+    # @param vote [Integer] Choices: -1, 0, 1
+    # @param post [Integer] Looks up a post by ID.
+    # @return [Hashie::Rash] Details on the post.
+    # @example Vote for post ID 12345678
+    #   Disqussion::Client.posts.vote(1, 12345678)
+    # @see: http://disqus.com/api/3.0/posts/vote.json
+    def vote(*args)
+      options = args.last.is_a?(Hash) ? args.pop : {}
+      if args.length == 2
+        options.merge!(:vote => args[0])
+        options.merge!(:post => args[1])
+        response = post('posts/vote', options)
+      else
+        puts "#{Kernel.caller.first}: posts.vote expects 2 arguments: vote([-1..1]), posts ID"
+      end
     end
   end
 end

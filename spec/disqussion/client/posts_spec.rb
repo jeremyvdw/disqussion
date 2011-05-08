@@ -71,6 +71,84 @@ describe Disqussion::Posts do
             should have_been_made
         end
       end
+      
+      describe ".remove" do
+        before do
+          stub_post("posts/remove.json", :body => { :post => "199088808" }).
+            to_return(:body => fixture("posts/remove.json"), :headers => {:content_type => "application/json; charset=utf-8"})
+        end
+        
+        it "returns id of the removed post." do
+          @client.remove(199088808)
+          a_post("posts/remove.json", :body => { :post => "199088808" }).
+            should have_been_made
+        end
+      end
+      
+      describe ".report" do
+        before do
+          stub_post("posts/report.json", :body => { :post => "199088808" }).
+            to_return(:body => fixture("posts/report.json"), :headers => {:content_type => "application/json; charset=utf-8"})
+        end
+        
+        it "returns id of the removed post." do
+          @client.report(199088808)
+          a_post("posts/report.json", :body => { :post => "199088808" }).
+            should have_been_made
+        end
+      end
+      
+      describe ".restore" do
+        before do
+          stub_post("posts/restore.json", :body => { :post => "199088808" }).
+            to_return(:body => fixture("posts/restore.json"), :headers => {:content_type => "application/json; charset=utf-8"})
+        end
+        
+        it "returns id of the restored post." do
+          @client.restore(199088808)
+          a_post("posts/restore.json", :body => { :post => "199088808" }).
+            should have_been_made
+        end
+      end
+      
+      describe ".spam" do
+        before do
+          stub_post("posts/spam.json", :body => { :post => "199088808" }).
+            to_return(:body => fixture("posts/spam.json"), :headers => {:content_type => "application/json; charset=utf-8"})
+        end
+        
+        it "returns id of post marked as spam." do
+          @client.spam(199088808)
+          a_post("posts/spam.json", :body => { :post => "199088808" }).
+            should have_been_made
+        end
+      end
+      
+      describe ".unhighlight" do
+        before do
+          stub_post("posts/unhighlight.json", :body => { :post => "199088808" }).
+            to_return(:body => fixture("posts/unhighlight.json"), :headers => {:content_type => "application/json; charset=utf-8"})
+        end
+        
+        it "returns id of post unhighlighted." do
+          @client.unhighlight(199088808)
+          a_post("posts/unhighlight.json", :body => { :post => "199088808" }).
+            should have_been_made
+        end
+      end
+      
+      describe ".vote" do
+        before do
+          stub_post("posts/vote.json", :body => { :vote => "1", :post => "199088808" }).
+            to_return(:body => fixture("posts/vote.json"), :headers => {:content_type => "application/json; charset=utf-8"})
+        end
+        
+        it "returns id of post." do
+          @client.vote(1, 199088808)
+          a_post("posts/vote.json", :body => { :vote => "1", :post => "199088808" }).
+            should have_been_made
+        end
+      end
     end
   end
 end
