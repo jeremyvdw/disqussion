@@ -34,7 +34,16 @@ describe Disqussion::Forums do
       end
       
       describe ".listMostLikedUsers" do
-        pending
+        before do
+          stub_get("forums/listMostLikedUsers.json", :query => { :forum => "the88" }).
+            to_return(:body => fixture("forums/listMostLikedUsers.json"), :headers => {:content_type => "application/json; charset=utf-8"})
+        end
+        
+        it "returns details on the requested list of users." do
+          @client.listMostLikedUsers("the88")
+          a_get("forums/listMostLikedUsers.json", :query => { :forum => "the88" }).
+            should have_been_made
+        end
       end
       
       describe ".listCategories" do

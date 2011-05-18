@@ -62,10 +62,26 @@ module Disqussion
       response = get('forums/listCategories', options)
     end
     
-    # NOTE: to be implemented
     # Returns a list of users active within a forum ordered by most likes received.
+    # @accessibility: public key, secret key
+    # @methods: GET
+    # @format: json, jsonp
+    # @authenticated: false
+    # @limited: false
+    # @param forum [String] Forum ID (aka short name).
+    # @return [Hashie::Rash] Details on the list of posts.
+    # @param options [Hash] A customizable set of options.
+    # @option options [Datetime, Timestamp] :since. Unix timestamp (or ISO datetime standard). Defaults to null
+    # @option options [Integer] :cursor. Defaults to null
+    # @option options [Integer] :limit. Defaults to 25. Maximum length of 100
+    # @option options [String] :order. Defaults to "desc". Choices: asc, desc
+    # @example Return list of most liked users for forum 'myforum'
+    #   Disqussion::Client.forums.listMostLikedUsers("myforum")
     # @see: http://disqus.com/api/3.0/forums/listMostLikedUsers.json
     def listMostLikedUsers(*args)
+      options = args.last.is_a?(Hash) ? args.pop : {}
+      options[:forum] = args.first
+      response = get('forums/listMostLikedUsers', options)
     end
     
     # Returns a list of posts within a forum.
