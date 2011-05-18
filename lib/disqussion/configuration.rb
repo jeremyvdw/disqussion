@@ -32,11 +32,7 @@ module Disqussion
     # The adapter that will be used to connect if none is set
     #
     # @note The default faraday adapter is Net::HTTP.
-    DEFAULT_ADAPTER = if defined?(EventMachine) && EM.reactor_running?
-      EMSynchrony
-    else
-      Faraday.default_adapter
-    end
+    DEFAULT_ADAPTER = Faraday.default_adapter
 
     # By default, don't set an application key
     DEFAULT_API_KEY = nil
