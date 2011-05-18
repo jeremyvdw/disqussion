@@ -22,8 +22,10 @@ Continuous Integration
 ----------------------
 [![Build Status](http://travis-ci.org/jeremyvdw/disqussion.png)](http://travis-ci.org/jeremyvdw/disqussion)
 
-What's in 0.1?
-------------------
+What's in 0.0.3?
+----------------
+
+Disqussion currently covers *only* stable Disqus API for: applications, forums, posts, reactions, threads and users features.
 
 The error classes are consistent with [Disqus's documented response codes](http://disqus.com/api/docs/errors/).
 Error details from Disqus API are encapsulated in HTTP response.

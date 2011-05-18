@@ -1,5 +1,14 @@
 HISTORY
 =======
+
+0.0.3 - May 18, 2011
+----------------------
+* Added following missing features: Users#listActiveForums, Users#listForums, Users#listPosts, Users#unfollow, Forums#listMostLikedUsers, Forums#listUsers
+
+0.0.2 - May 18, 2011
+----------------------
+* Fixed bug with EventMachine detection in configuration
+
 0.0.1 - May 10, 2011
 ----------------------
 * First release
