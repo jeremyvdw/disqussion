@@ -118,5 +118,26 @@ module Disqussion
       response = get('forums/listThreads', options)
     end
     
+    # Returns a list of users active within a forum.
+    # @accessibility: public key, secret key
+    # @methods: GET
+    # @format: json, jsonp
+    # @authenticated: false
+    # @limited: false
+    # @param forum [String] Forum ID (aka short name).
+    # @return [Hashie::Rash] Details on the list of posts.
+    # @param options [Hash] A customizable set of options.
+    # @option options [Datetime, Timestamp] :since. Unix timestamp (or ISO datetime standard). Defaults to null
+    # @option options [Integer] :cursor. Defaults to null
+    # @option options [Integer] :limit. Defaults to 25. Maximum length of 100
+    # @option options [String] :order. Defaults to "desc". Choices: asc, desc
+    # @example Return list of active users for forum 'myforum'
+    #   Disqussion::Client.forums.listUsers("myforum")
+    # @see: http://disqus.com/api/3.0/forums/listUsers.json
+    def listUsers(*args)
+      options = args.last.is_a?(Hash) ? args.pop : {}
+      options[:forum] = args.first
+      response = get('forums/listUsers', options)
+    end
   end
 end

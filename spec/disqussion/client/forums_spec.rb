@@ -33,17 +33,8 @@ describe Disqussion::Forums do
         end
       end
       
-      describe ".listPosts" do
-        before do
-          stub_get("forums/listPosts.json", :query => { :forum => "the88" }).
-            to_return(:body => fixture("forums/listPosts.json"), :headers => {:content_type => "application/json; charset=utf-8"})
-        end
-        
-        it "returns details on the requested list of posts." do
-          @client.listPosts("the88")
-          a_get("forums/listPosts.json", :query => { :forum => "the88" }).
-            should have_been_made
-        end
+      describe ".listMostLikedUsers" do
+        pending
       end
       
       describe ".listCategories" do
@@ -59,8 +50,17 @@ describe Disqussion::Forums do
         end
       end
       
-      describe ".listMostLikedUsers" do
-        pending
+      describe ".listPosts" do
+        before do
+          stub_get("forums/listPosts.json", :query => { :forum => "the88" }).
+            to_return(:body => fixture("forums/listPosts.json"), :headers => {:content_type => "application/json; charset=utf-8"})
+        end
+        
+        it "returns details on the requested list of posts." do
+          @client.listPosts("the88")
+          a_get("forums/listPosts.json", :query => { :forum => "the88" }).
+            should have_been_made
+        end
       end
       
       describe ".listThreads" do
@@ -72,6 +72,19 @@ describe Disqussion::Forums do
         it "returns details on the requested list of threads." do
           @client.listThreads("the88")
           a_get("forums/listThreads.json", :query => { :forum => "the88" }).
+            should have_been_made
+        end
+      end
+      
+      describe ".listUsers" do
+        before do
+          stub_get("forums/listUsers.json", :query => { :forum => "the88" }).
+            to_return(:body => fixture("forums/listUsers.json"), :headers => {:content_type => "application/json; charset=utf-8"})
+        end
+        
+        it "returns details on the requested list of users." do
+          @client.listUsers("the88")
+          a_get("forums/listUsers.json", :query => { :forum => "the88" }).
             should have_been_made
         end
       end

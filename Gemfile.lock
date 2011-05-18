@@ -1,7 +1,7 @@
 PATH
   remote: .
   specs:
-    disqussion (0.0.1)
+    disqussion (0.0.2)
       faraday (~> 0.6.1)
       faraday_middleware (~> 0.6.3)
       hashie (~> 1.0.0)
@@ -29,8 +29,8 @@ GEM
       ruby_core_source (>= 0.1.4)
     maruku (0.6.0)
       syntax (>= 1.0.0)
-    multi_json (1.0.1)
-    multipart-post (1.1.0)
+    multi_json (1.0.2)
+    multipart-post (1.1.1)
     nokogiri (1.4.4)
     rack (1.2.2)
     rake (0.8.7)
