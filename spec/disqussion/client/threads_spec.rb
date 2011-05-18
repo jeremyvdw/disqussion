@@ -46,6 +46,14 @@ describe Disqussion::Threads do
         end
       end
       
+      describe ".listBydate" do
+        pending
+      end
+      
+      describe ".listHot" do
+        pending
+      end
+      
       describe ".listMostLiked" do
         before do
           stub_get("threads/listMostLiked.json", :query => { :forum => "the88" }).
@@ -59,6 +67,10 @@ describe Disqussion::Threads do
         end
       end
       
+      describe ".listPopular" do
+        pending
+      end
+      
       describe ".listPosts" do
         before do
           stub_get("threads/listPosts.json", :query => { :thread => "mythread" }).
@@ -70,6 +82,10 @@ describe Disqussion::Threads do
           a_get("threads/listPosts.json", :query => { :thread => "mythread" }).
             should have_been_made
         end
+      end
+      
+      describe ".listSimilar" do
+        pending
       end
       
       describe ".open" do
@@ -109,6 +125,10 @@ describe Disqussion::Threads do
           a_post("threads/restore.json", :body => { :thread => "12345678" }).
             should have_been_made
         end
+      end
+      
+      describe ".update" do
+        pending
       end
       
       describe ".vote" do

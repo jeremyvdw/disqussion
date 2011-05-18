@@ -46,6 +46,10 @@ describe Disqussion::Posts do
         end
       end
       
+      describe ".getContext" do
+        pending
+      end
+      
       describe ".highlight" do
         before do
           stub_post("posts/highlight.json", :body => { :post => "199088808" }).
@@ -70,6 +74,10 @@ describe Disqussion::Posts do
           a_get("posts/list.json", :query => { :thread => "293757871" }).
             should have_been_made
         end
+      end
+      
+      describe ".listPopular" do
+        pending
       end
       
       describe ".remove" do

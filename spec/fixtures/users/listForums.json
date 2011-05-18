@@ -1,0 +1,41 @@
+{
+  "cursor": {
+    "prev": null, 
+    "hasNext": false, 
+    "next": "794542:0:0", 
+    "hasPrev": false, 
+    "total": null, 
+    "id": "794542:0:0", 
+    "more": false
+  }, 
+  "code": 0, 
+  "response": [
+    {
+      "id": "the88", 
+      "name": "The 88", 
+      "founder": "1234", 
+      "favicon": {
+        "permalink": "http://disqus.com/api/forums/favicons/the88.jpg", 
+        "cache": "http://mediacdn.disqus.com/1305667412/images/favicon-default.png"
+      }
+    }, 
+    {
+      "id": "yvanrodic", 
+      "name": "Yvan Rodic", 
+      "founder": "1234", 
+      "favicon": {
+        "permalink": "http://disqus.com/api/forums/favicons/yvanrodic.jpg", 
+        "cache": "http://mediacdn.disqus.com/1305667412/images/favicon-default.png"
+      }
+    }, 
+    {
+      "id": "atestforum", 
+      "name": "the88", 
+      "founder": "1234", 
+      "favicon": {
+        "permalink": "http://disqus.com/api/forums/favicons/atestforum.jpg", 
+        "cache": "http://mediacdn.disqus.com/1305667412/images/favicon-default.png"
+      }
+    }
+  ]
+}
