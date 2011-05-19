@@ -16,13 +16,12 @@ describe Faraday::Response do
 
       before do
         stub_get('users/details.json').
-          with(:query => {:"user:username" => 'the88'}).
-          to_return(:status => status)
+          to_return(:status => status, :body => fixture("faraday/error2.json"), :headers => {:content_type => "application/json; charset=utf-8"})
       end
 
       it "should raise #{exception.name} error" do
         lambda do
-          @client.details('the88')
+          @client.details
         end.should raise_error(exception)
       end
     end

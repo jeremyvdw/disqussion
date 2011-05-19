@@ -53,9 +53,9 @@ module Disqussion
     # @option options [Integer] :cursor. Defaults to null
     # @option options [Integer] :limit. Defaults to 25. Maximum length of 100
     # @option options [String] :order. Defaults to "asc". Choices: asc, desc
-    # @example Return extended information for forum 'myforum'
-    #   Disqussion::Client.forums.listCategories("myforum", {:cursor => 10, :limit => 10, :order => 'asc'})
-    # @see: http://disqus.com/api/3.0/forums/details.json
+    # @example Return list of categories within forum 'myforum'
+    #   Disqussion::Client.categories.list("myforum", {:cursor => 10, :limit => 10, :order => 'asc'})
+    # @see: http://disqus.com/api/3.0/forums/listCategories.json
     def listCategories(*args)
       options = args.last.is_a?(Hash) ? args.pop : {}
       options[:forum] = args.first

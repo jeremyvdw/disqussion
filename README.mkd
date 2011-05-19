@@ -2,8 +2,6 @@ The Disqussion Ruby Gem
 ====================
 A Ruby wrapper for the Disqus API
 
-IMPORTANT: This gem is non-usable for production, beta version expected on May 9th 2011
-
 Installation
 ------------
 ``` sh
@@ -25,9 +23,9 @@ Continuous Integration
 What's in 0.0.3?
 ----------------
 
-Disqussion currently covers *only* stable Disqus API for: applications, forums, posts, reactions, threads and users features.
+Disqussion currently covers *only* stable Disqus API features for: applications, forums, posts, reactions, threads and users.
 
-The error classes are consistent with [Disqus's documented response codes](http://disqus.com/api/docs/errors/).
+The error classes are consistent with [Disqus documented response codes](http://disqus.com/api/docs/errors/).
 Error details from Disqus API are encapsulated in HTTP response.
 
 <table>

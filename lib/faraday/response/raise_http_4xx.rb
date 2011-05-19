@@ -20,21 +20,14 @@ module Faraday
     private
 
     def error_message(env)
-      "#{env[:method].to_s.upcase} #{env[:url].to_s}: #{env[:status]}#{error_body(env[:body])}"
+      "#{env[:method].to_s.upcase} #{env[:url].to_s}: (#{env[:status]}) #{error_body(env[:body])}"
     end
 
     def error_body(body)
-      if body.nil?
+      if body['code'] && body['response']
+        "Disqus Error #{body['code']}: #{body['response']}"
+      else
         nil
-      elsif body['error']
-        ": #{body['error']}"
-      elsif body['errors']
-        first = body['errors'].to_a.first
-        if first.kind_of? Hash
-          ": #{first['message'].chomp}"
-        else
-          ": #{first.chomp}"
-        end
       end
     end
   end
