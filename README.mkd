@@ -23,9 +23,9 @@ Continuous Integration
 What's in 0.0.3?
 ----------------
 
-Disqussion currently covers *only* stable Disqus API features for: applications, categories, forums, imports, posts, reactions, reports, threads and users.
+Disqussion currently covers *only* stable Disqus API features for: applications, categories, exports, forums, imports, posts, reactions, reports, threads and users.
 
-Missing following features: blacklists, exports and whitelists.
+Missing following features: blacklists and whitelists.
 
 The error classes are consistent with [Disqus documented response codes](http://disqus.com/api/docs/errors/).
 Error details from Disqus API are encapsulated in HTTP response.
