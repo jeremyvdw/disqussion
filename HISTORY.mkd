@@ -1,6 +1,10 @@
 HISTORY
 =======
 
+0.0.4 - May 19, 2011
+----------------------
+* Added following features: Categories, Exports, Imports, Reports
+
 0.0.3 - May 18, 2011
 ----------------------
 * Added following missing features: Users#listActiveForums, Users#listForums, Users#listPosts, Users#unfollow, Forums#listMostLikedUsers, Forums#listUsers

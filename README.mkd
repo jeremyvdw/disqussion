@@ -20,7 +20,7 @@ Continuous Integration
 ----------------------
 [![Build Status](http://travis-ci.org/jeremyvdw/disqussion.png)](http://travis-ci.org/jeremyvdw/disqussion)
 
-What's in 0.0.3?
+What's in 0.0.4?
 ----------------
 
 Disqussion currently covers *only* stable Disqus API features for: applications, categories, exports, forums, imports, posts, reactions, reports, threads and users.
