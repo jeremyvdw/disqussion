@@ -1,6 +1,6 @@
 require 'faraday_middleware'
-require 'faraday/response/raise_http_4xx'
-require 'faraday/response/raise_http_5xx'
+require 'faraday/disqussion/raise_http_4xx'
+require 'faraday/disqussion/raise_http_5xx'
 
 module Disqussion
   # @private
@@ -18,7 +18,7 @@ module Disqussion
       Faraday.new(options) do |builder|
         builder.use Faraday::Request::Multipart
         builder.use Faraday::Request::UrlEncoded
-        builder.use Faraday::Response::RaiseHttp4xx
+        builder.use Faraday::Disqussion::RaiseHttp4xx
         builder.use Faraday::Response::Rashify unless raw
         unless raw
           case format.to_s.downcase
@@ -28,7 +28,7 @@ module Disqussion
             builder.use Faraday::Response::ParseXml
           end
         end
-        builder.use Faraday::Response::RaiseHttp5xx
+        builder.use Faraday::Disqussion::RaiseHttp5xx
         builder.adapter(adapter)
       end
     end
