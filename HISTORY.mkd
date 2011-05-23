@@ -1,6 +1,10 @@
 HISTORY
 =======
 
+0.0.5 - May 23, 2011
+----------------------
+* Fixes conflicts with the `twitter` gem (@mathieuravaux).
+
 0.0.4 - May 19, 2011
 ----------------------
 * Added following features: Categories, Exports, Imports, Reports
