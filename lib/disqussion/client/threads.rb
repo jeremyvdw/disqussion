@@ -177,6 +177,11 @@ module Disqussion
       response = post('threads/subscribe', options)
     end
 
+    def unsubscribe(*args)
+      options = args.last.is_a?(Hash) ? args.pop : {}
+      response = post('threads/unsubscribe', options)
+    end
+
     # Register a vote on a thread.
     # @accessibility: public key, secret key
     # @methods: POST
