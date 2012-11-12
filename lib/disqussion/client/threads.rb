@@ -174,7 +174,7 @@ module Disqussion
 
     def subscribe(*args)
       options = args.last.is_a?(Hash) ? args.pop : {}
-      response = get('threads/subscribe', options)
+      response = post('threads/subscribe', options)
     end
 
     # Register a vote on a thread.
