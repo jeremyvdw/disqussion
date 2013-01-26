@@ -61,6 +61,24 @@ module Disqussion
     
     # BETA
     # Returns a list of threads a user has participated in sorted by last activity.
+    # @accessibility: public key, secret key
+    # @methods: GET
+    # @format: json, jsonp
+    # @authenticated: false
+    # @limited: true
+    # @return [Hashie::Rash] Details on the list of active threads.
+    # @param options [Hash] A customizable set of options.
+    # @option options [String] :forum. Looks up a forum by ID (aka short name). Defaults to null
+    # @option options [Datetime, Timestamp] :since. Unix timestamp (or ISO datetime standard). Defaults to null
+    # @option options [Integer, String] :related. Allows multiple. Defaults to []. You may specify relations to include with your response. Choices: forum, author and category.
+    # @option options [Integer] :cursor. Defaults to null
+    # @option options [Integer] :limit. Defaults to 25. Maximum length of 100
+    # @option options [Integer] :user. Defaults to null. Looks up a user by ID. You may look up a user by username using the 'username' query type.
+    # @option options [String, Array] :include. Allows multiple. Defaults to ["open", "closed" ]. Choices: open, closed, killedr
+    # @option options [String] :order. Defaults to "desc". Choices: asc, desc
+    # @example Return a list of active threads user 1234 has been active on
+    #   Disqussion::Client.users.listActiveThreadss(:user => 1234)
+    # @see: http://disqus.com/api/3.0/users/listActiveThreads.json
      def listActiveThreads(*args)
       options = args.last.is_a?(Hash) ? args.pop : {}
       response = get('users/listActiveThreads', options)
