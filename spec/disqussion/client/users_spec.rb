@@ -52,7 +52,14 @@ describe Disqussion::Users do
       end
       
       describe ".listActivity" do
-        pending
+        it "gets a list of various activity types made by the user." do
+          stub_get("users/listActivity.json", :query => { :user => "1234"}).
+            to_return(:body => fixture("users/listActivity.json"), :headers => {:content_type => "application/json; charset=utf-8"})
+
+          @client.listActivity(:user => 1234)
+
+          a_get("users/listActivity.json", :query => { :user => "1234"}).should have_been_made
+        end
       end
       
       describe ".listFollowers" do

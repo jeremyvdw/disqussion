@@ -86,8 +86,27 @@ module Disqussion
     
     # BETA
     # Returns a list of various activity types made by the user.
+     # @accessibility: public key, secret key
+    # @methods: GET
+    # @format: json, jsonp
+    # @authenticated: false
+    # @limited: true
+    # @return [Hashie::Rash] Details on the list of active threads.
+    # @param options [Hash] A customizable set of options.
+    # @option options [Datetime, Timestamp] :since. Unix timestamp (or ISO datetime standard). Defaults to null
+    # @option options [Integer, String] :related. Allows multiple. Defaults to []. You may specify relations to include with your response. Choices: forum, author and category.
+    # @option options [Integer] :cursor. Defaults to null
+    # @option options [Integer] :limit. Defaults to 25. Maximum length of 100
+    # @option options [Integer] :user. Defaults to null. Looks up a user by ID. You may look up a user by username using the 'username' query type.
+    # @option options [] :query. Defaults to null
+    # @option options [String, Array] :include. Allows multiple. Defaults to ["user", "replies", "following" ]. Choices: user, replies, following
+    # @option options [String] :anon_user. Defaults to null. Looks up an anonymous user by unique hash.
+    # @example Return a list of active threads user 1234 has been active on
+    #   Disqussion::Client.users.listActivity(:user => 1234)
+    # @see: http://disqus.com/api/3.0/users/listActivity.json
     def listActivity(*args)
-      
+      options = args.last.is_a?(Hash) ? args.pop : {}
+      response = get('users/listActivity', options)
     end
     
     # BETA
