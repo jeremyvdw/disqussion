@@ -61,8 +61,9 @@ module Disqussion
     
     # BETA
     # Returns a list of threads a user has participated in sorted by last activity.
-    def listActiveThreads(*args)
-      
+     def listActiveThreads(*args)
+      options = args.last.is_a?(Hash) ? args.pop : {}
+      response = get('users/listActiveThreads', options)
     end
     
     # BETA
