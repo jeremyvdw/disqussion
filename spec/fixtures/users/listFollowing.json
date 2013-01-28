@@ -1,0 +1,42 @@
+{
+  "cursor": {
+    "prev": null,
+    "hasNext": false,
+    "next": "0:0:0",
+    "hasPrev": false,
+    "total": null,
+    "id": "0:0:0",
+    "more": false
+  },
+  "code": 0,
+  "response": [
+{
+      "username": "paulgraham",
+      "about": "",
+      "name": "paulgraham",
+      "url": "",
+      "isAnonymous": false,
+      "rep": 1.329051,
+      "profileUrl": "http://disqus.com/paulgraham/",
+      "emailHash": "d41d8cd98f00b204e9800998ecf8427e",
+      "reputation": 1.329051,
+      "location": "",
+      "isPrimary": true,
+      "joinedAt": "2007-07-31T18:09:39",
+      "id": "2",
+      "avatar": {
+        "small": {
+          "permalink": "http://disqus.com/api/users/avatars/paulgraham.jpg",
+          "cache": "http://mediacdn.disqus.com/1359151009/images/noavatar32.png"
+        },
+        "isCustom": false,
+        "permalink": "http://disqus.com/api/users/avatars/paulgraham.jpg",
+        "cache": "http://mediacdn.disqus.com/1359151009/images/noavatar92.png",
+        "large": {
+          "permalink": "http://disqus.com/api/users/avatars/paulgraham.jpg",
+          "cache": "http://mediacdn.disqus.com/1359151009/images/noavatar92.png"
+        }
+      }
+    }
+  ]
+}

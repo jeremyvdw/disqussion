@@ -63,15 +63,29 @@ describe Disqussion::Users do
       end
       
       describe ".listFollowers" do
-        pending
+        it "gets a list of users followers." do
+          stub_get("users/listFollowers.json", :query  => { :user => "1234"}).
+            to_return(:body => fixture("users/listFollowers.json"), :headers => {:content_type => "application/json; charset=utf-8"})
+          
+          @client.listFollowers(:user => 1234)
+
+          a_get("users/listFollowers.json", :query => { :user => "1234"}).should have_been_made
+        end
       end
       
       describe ".listFollowing" do
-        pending
+        it "gets a list of users the user is following on Disqus." do
+          stub_get("users/listFollowing.json", :query  => { :user => "1"}).
+            to_return(:body => fixture("users/listFollowing.json"), :headers => {:content_type => "application/json; charset=utf-8"})
+          
+          @client.listFollowing(:user => 1)
+
+          a_get("users/listFollowing.json", :query => { :user => "1"}).should have_been_made
+        end
       end
       
       describe ".listForums" do
-        it "get list of users forums." do
+        it "gets list of users forums." do
           stub_get("users/listForums.json", :query => { :user => "1234" }).
             to_return(:body => fixture("users/listForums.json"), :headers => {:content_type => "application/json; charset=utf-8"})
           
@@ -82,7 +96,14 @@ describe Disqussion::Users do
       end
       
       describe "listMostActiveForums" do
-        pending
+        it "gets list of forums the user is most active on" do
+          stub_get("users/listMostActiveForums.json", :query => { :user => "1" }).
+            to_return(:body => fixture("users/listMostActiveForums.json"), :headers => {:content_type => "application/json; charset=utf-8"})
+          
+          @client.listMostActiveForums(:user => 1)
+          
+          a_get("users/listMostActiveForums.json", :query => { :user => "1"}).should have_been_made
+        end
       end
       
       describe ".listPosts" do

@@ -86,7 +86,7 @@ module Disqussion
     
     # BETA
     # Returns a list of various activity types made by the user.
-     # @accessibility: public key, secret key
+    # @accessibility: public key, secret key
     # @methods: GET
     # @format: json, jsonp
     # @authenticated: false
@@ -111,14 +111,44 @@ module Disqussion
     
     # BETA
     # Returns a list of users a user is being followed by.
+    # @accessibility: public key, secret key
+    # @methods: GET
+    # @format: json, jsonp
+    # @authenticated: false
+    # @limited: true
+    # @return [Hashie::Rash] Details on the users the user is being followed by.
+    # @option options [Datetime, Timestamp] :since. Unix timestamp (or ISO datetime standard). Defaults to null
+    # @option options [Integer] :cursor. Defaults to null
+    # @option options [Integer] :limit. Defaults to 25. Maximum length of 100
+    # @option options [Integer] :user. Defaults to null. Looks up a user by ID. You may look up a user by username using the 'username' query type.
+    # @option options [String] :order. Defaults to "asc". Choices: asc, desc
+    # @example  Return a list of users the user is currently being followed by
+    #   Disqussion::Client.users.listFollowers(:user => 1234)
+    # @see: http://disqus.com/api/3.0/users/listFollowers.json 
     def listFollowers(*args)
-      
+      options = args.last.is_a?(Hash) ? args.pop : {}
+      response = get('users/listFollowers', options)      
     end
     
     # BETA
     # Returns a list of users a user is following.
+    # @accessibility: public key, secret key
+    # @methods: GET
+    # @format: json, jsonp
+    # @authenticated: false
+    # @limited: true
+    # @return [Hashie::Rash] Details on the users the user is following.
+    # @option options [Datetime, Timestamp] :since. Unix timestamp (or ISO datetime standard). Defaults to null
+    # @option options [Integer] :cursor. Defaults to null
+    # @option options [Integer] :limit. Defaults to 25. Maximum length of 100
+    # @option options [Integer] :user. Defaults to null. Looks up a user by ID. You may look up a user by username using the 'username' query type.
+    # @option options [String] :order. Defaults to "asc". Choices: asc, desc
+    # @example  Return a list of users the user is currently following
+    #   Disqussion::Client.users.listFollowing(:user => 1234)
+    # @see: http://disqus.com/api/3.0/users/listFollowing.json 
     def listFollowing(*args)
-      
+      options = args.last.is_a?(Hash) ? args.pop : {}
+      response = get('users/listFollowing', options) 
     end
     
     # Returns a list of forums a user owns.
@@ -144,8 +174,20 @@ module Disqussion
     
     # BETA
     # Returns a list of forums a user has been active on recenty, sorted by the user's activity.
+    # @accessibility: public key, secret key
+    # @methods: GET
+    # @format: json, jsonp
+    # @authenticated: false
+    # @limited: true
+    # @return [Hashie::Rash] Details on the users list of forums they have been most active on recently.
+    # @option options [Integer] :limit. Defaults to 25. Maximum length of 100
+    # @option options [Integer] :user. Defaults to null. Looks up a user by ID. You may look up a user by username using the 'username' query type.
+    # @example Return a list of the forums the user has been most active on recently.
+    #   Disqussion::Client.users.listMostActiveForums(:user => 1234)
+    # @see: http://disqus.com/api/3.0/users/listMostActiveForums.json 
     def listMostActiveForums(*args)
-      
+      options = args.last.is_a?(Hash) ? args.pop : {}
+      response = get('users/listMostActiveForums', options)
     end
     
     # Returns a list of posts made by the user.
