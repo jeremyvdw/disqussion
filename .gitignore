@@ -7,3 +7,5 @@ doc/*
 .yardcache/*
 .yardoc/*
 spec/.DS_Store
+*.un~
+**/*.un~
