@@ -1,4 +1,4 @@
-require 'helper'
+require 'spec_helper'
 
 describe Disqussion::Posts do
   Disqussion::Configuration::VALID_FORMATS.each do |format|
