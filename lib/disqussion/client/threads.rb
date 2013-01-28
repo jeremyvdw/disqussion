@@ -18,7 +18,7 @@ module Disqussion
       options.merge!(:thread => thread) if ([:ident, :link] & options.keys).empty?
       response = post('threads/close', options)
     end
-    
+
     # Returns thread details.
     # @accessibility: public key, secret key
     # @methods: GET
@@ -39,7 +39,7 @@ module Disqussion
       options.merge!(:thread => thread) if ([:ident, :link] & options.keys).empty?
       response = get('threads/details', options)
     end
-    
+
     # Returns a list of threads sorted by the date created.
     # @accessibility: public key, secret key
     # @methods: GET
@@ -57,7 +57,7 @@ module Disqussion
     # @option options [Integer] :cursor. Defaults to null
     # @option options [Integer] :limit. Defaults to 25. Maximum length of 100
     # @option options [String, Array] :include allows multiple. Defaults to ["open", "close"]. Choices: open, closed, killed.
-    # @option options [String] :order. Defaults to "asc". Choices: asc, desc    
+    # @option options [String] :order. Defaults to "asc". Choices: asc, desc
     # @example Return extended information for forum 'myforum'
     #   Disqussion::Client.threads.list(:forum => "the88")
     # @see: http://disqus.com/api/3.0/threads/list.json
@@ -65,7 +65,7 @@ module Disqussion
       options = args.last.is_a?(Hash) ? args.pop : {}
       response = get('threads/list', options)
     end
-    
+
     # Returns a list of threads sorted by number of likes.
     # @accessibility: public key, secret key
     # @methods: GET
@@ -87,7 +87,7 @@ module Disqussion
       options = args.last.is_a?(Hash) ? args.pop : {}
       response = get('threads/listMostLiked', options)
     end
-    
+
     # Returns a list of posts within a thread.
     # @accessibility: public key, secret key
     # @methods: GET
@@ -114,7 +114,7 @@ module Disqussion
       options.merge!(:thread => thread) if ([:ident, :link] & options.keys).empty?
       response = get('threads/listPosts', options)
     end
-    
+
     # Opens a thread
     # @accessibility: public key, secret key
     # @methods: POST
@@ -133,7 +133,7 @@ module Disqussion
       options.merge!(:thread => thread) if ([:ident, :link] & options.keys).empty?
       response = post('threads/open', options)
     end
-    
+
     # Removes a thread
     # @accessibility: public key, secret key
     # @methods: POST
@@ -152,7 +152,7 @@ module Disqussion
       options.merge!(:thread => thread) if ([:ident, :link] & options.keys).empty?
       response = post('threads/remove', options)
     end
-    
+
     # Restores a thread
     # @accessibility: public key, secret key
     # @methods: POST
@@ -171,7 +171,17 @@ module Disqussion
       options.merge!(:thread => thread) if ([:ident, :link] & options.keys).empty?
       response = post('threads/restore', options)
     end
-    
+
+    def subscribe(*args)
+      options = args.last.is_a?(Hash) ? args.pop : {}
+      response = post('threads/subscribe', options)
+    end
+
+    def unsubscribe(*args)
+      options = args.last.is_a?(Hash) ? args.pop : {}
+      response = post('threads/unsubscribe', options)
+    end
+
     # Register a vote on a thread.
     # @accessibility: public key, secret key
     # @methods: POST
