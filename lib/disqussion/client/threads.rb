@@ -88,6 +88,28 @@ module Disqussion
       response = get('threads/listMostLiked', options)
     end
 
+    # BETA
+    # Returns a list of threads sorted by hotness (date and likes).
+    # @accessibility: public key, secret key
+    # @methods: GET
+    # @format: json, jsonp, rss
+    # @authenticated: false
+    # @limited: false
+    # @return [Hashie::Rash] List of the hottest threads sorted by hotness.
+    # @option options [Integer] :category. Looks up a category by ID. Defualts to null.
+    # @option options [String] :forum. Defaults to null. Looks up a forum by ID (aka short name)
+    # @option options [String, Integer]  :author. Defaults to null. Looks up a user by ID. You may look up a user by username using the 'username' query type.
+    # @option options [String, Array] :related. allows multiple. Defaults to []. You may specify relations to include with your response. Choices: forum, author,category
+    # @option options [Integer] :limit. Defaults to 25. Maximum length of 100
+    # @option options [String, Array] :include .allows multiple. Defaults to ["open", "close"]. Choices: open, closed, killed.
+    # @example Return list of hottest threads of the forum specified
+    #   Disqussion::Client.threadslistHot(:forum => "cnn")
+    # @see: http://disqus.com/api/3.0/threads/listHot.json
+    def listHot(*args)
+      options = args.last.is_a?(Hash) ? args.pop : {}
+      response = get('threads/listHot', options)
+    end 
+
     # Returns a list of posts within a thread.
     # @accessibility: public key, secret key
     # @methods: GET
