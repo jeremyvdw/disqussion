@@ -18,7 +18,18 @@ Add it to the [apps](http://github.com/jeremyvdw/disqussion/wiki/apps) wiki!
 
 Continuous Integration
 ----------------------
-[![Build Status](http://travis-ci.org/jeremyvdw/disqussion.png)](http://travis-ci.org/jeremyvdw/disqussion)
+[![Build Status](https://travis-ci.org/jeremyvdw/disqussion.png)](http://travis-ci.org/jeremyvdw/disqussion)
+
+What's in 0.0.6?
+----------------------
+* Added subscribe and unsubscribe API calls (@wbrady)
+* List users activity and list users active threads (@shabankarumba)
+* Updated dependencies
+
+What's in 0.0.5?
+----------------------
+
+* Fixes conflicts with the `twitter` gem (@mathieuravaux).
 
 What's in 0.0.4?
 ----------------
