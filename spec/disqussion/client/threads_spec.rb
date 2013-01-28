@@ -51,7 +51,16 @@ describe Disqussion::Threads do
       end
       
       describe ".listHot" do
-        pending
+        before do 
+          stub_get("threads/listHot.json", :query => { :forum => "cnn" }).
+            to_return(:body => fixture("threads/listHot.json"), :headers => {:content_type => "application/json; charset=utf-8"})
+        end
+
+        it "returns a list of hot threads of a forum" do
+          @client.listHot(:forum => "cnn")
+          a_get("threads/listHot.json", :query => { :forum => "cnn" }).
+            should have_been_made
+        end
       end
       
       describe ".listMostLiked" do

@@ -1,0 +1,24 @@
+{
+  "code": 0,
+  "response": [
+  {
+      "name": "The Disqus Blog",
+      "language": "en",
+      "settings": {
+        "allowAnonPost": true,
+        "audienceSyncEnabled": false,
+        "allowMedia": true,
+        "hasReactions": true,
+        "ssoRequired": false,
+        "backplaneEnabled": false
+      },
+      "url": "http://blog.disqus.com/",
+      "favicon": {
+        "permalink": "http://disqus.com/api/forums/favicons/disqus.jpg",
+        "cache": "http://mediacdn.disqus.com/uploads/forums/11/favicon.png"
+      },
+      "founder": "3",
+      "id": "disqus"
+    }
+    ]
+}

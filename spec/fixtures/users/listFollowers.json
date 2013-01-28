@@ -1,0 +1,42 @@
+{
+  "cursor": {
+    "prev": null,
+    "hasNext": false,
+    "next": "219244:1:0",
+    "hasPrev": false,
+    "total": null,
+    "id": "219244:1:0",
+    "more": false
+  },
+  "code": 0,
+  "response": [
+    {
+      "username": "terrybain",
+      "about": "Author of You Are a Dog and We Are the Cat.",
+      "name": "Terry Bain",
+      "url": "http://flavors.me/terrybain",
+      "isAnonymous": false,
+      "rep": 1.286317,
+      "profileUrl": "http://disqus.com/terrybain/",
+      "emailHash": "2c8f6b13613a93350ce3e2c01260eeff",
+      "reputation": 1.286317,
+      "location": "Spokane",
+      "isPrimary": true,
+      "joinedAt": "2007-10-31T17:37:00",
+      "id": "962",
+      "avatar": {
+        "small": {
+          "permalink": "http://disqus.com/api/users/avatars/terrybain.jpg",
+          "cache": "http://mediacdn.disqus.com/uploads/users/962/avatar32.jpg?1281549414"
+        },
+        "isCustom": false,
+        "permalink": "http://disqus.com/api/users/avatars/terrybain.jpg",
+        "cache": "http://mediacdn.disqus.com/uploads/users/962/avatar92.jpg?1281549414",
+        "large": {
+          "permalink": "http://disqus.com/api/users/avatars/terrybain.jpg",
+          "cache": "http://mediacdn.disqus.com/uploads/users/962/avatar92.jpg?1281549414"
+        }
+      }
+    }
+  ]
+}
