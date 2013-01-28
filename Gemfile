@@ -10,7 +10,7 @@ group :development do
 end
 
 group :test do
-  gem 'json', :platforms => :ruby_18
+  gem 'json', :platforms => [:ruby_18, :jruby]
   gem 'rspec', '>= 2.11'
   gem 'simplecov'
   gem 'webmock'
