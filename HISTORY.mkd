@@ -1,6 +1,12 @@
 HISTORY
 =======
 
+0.0.6 - Jan 28, 2013
+----------------------
+* Added subscribe and unsubscribe API calls (@wbrady)
+* List users activity and list users active threads (@shabankarumba)
+* Updated dependencies
+
 0.0.5 - May 23, 2011
 ----------------------
 * Fixes conflicts with the `twitter` gem (@mathieuravaux).
