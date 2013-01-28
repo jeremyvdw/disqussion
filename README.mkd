@@ -89,7 +89,7 @@ end
 
 # Get an application's usage details
 puts Disqussion::Client.applications.listUsage("the88")
-```
+
 
 Contributing
 ------------

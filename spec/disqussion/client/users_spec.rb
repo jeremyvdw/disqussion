@@ -41,11 +41,25 @@ describe Disqussion::Users do
       end
       
       describe ".listActiveThreads" do
-        pending
+        it "gets a list of threads a user has participated in" do
+          stub_get("users/listActiveThreads.json", :query => { :user => "1234"}).
+            to_return(:body => fixture("users/listActiveThreads.json"), :headers => {:content_type => "application/json; charset=utf-8"})
+
+          @client.listActiveThreads(:user => 1234)
+
+          a_get("users/listActiveThreads.json", :query => { :user => "1234"}).should have_been_made
+        end
       end
       
       describe ".listActivity" do
-        pending
+        it "gets a list of various activity types made by the user." do
+          stub_get("users/listActivity.json", :query => { :user => "1234"}).
+            to_return(:body => fixture("users/listActivity.json"), :headers => {:content_type => "application/json; charset=utf-8"})
+
+          @client.listActivity(:user => 1234)
+
+          a_get("users/listActivity.json", :query => { :user => "1234"}).should have_been_made
+        end
       end
       
       describe ".listFollowers" do
