@@ -88,7 +88,7 @@ explicitly require a JSON library. We recommend [yajl-ruby](http://github.com/br
 
 Usage Examples
 --------------
-``` ruby
+```ruby
 require "rubygems"
 require "disqussion"
 
@@ -101,7 +101,7 @@ end
 
 # Get an application's usage details
 puts Disqussion::Client.applications.listUsage("the88")
-
+```
 
 Contributing
 ------------
