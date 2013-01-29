@@ -19,6 +19,7 @@ Add it to the [apps](http://github.com/jeremyvdw/disqussion/wiki/apps) wiki!
 Continuous Integration
 ----------------------
 [![Build Status](https://travis-ci.org/jeremyvdw/disqussion.png)](http://travis-ci.org/jeremyvdw/disqussion)
+[![Dependency Status](https://gemnasium.com/jeremyvdw/disqussion.png)](https://gemnasium.com/jeremyvdw/disqussion)
 
 What's in 0.0.6?
 ----------------------
