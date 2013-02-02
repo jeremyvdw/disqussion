@@ -1,0 +1,25 @@
+{
+  "code": 0,
+  "response": {
+    "category": "1",
+    "reactions": 0,
+    "identifiers": [
+      "my-identifier"
+    ],
+    "forum": "bobross",
+    "title": "Hello World",
+    "dislikes": 0,
+    "isDeleted": false,
+    "author": "1",
+    "userScore": 0,
+    "id": "1",
+    "isClosed": false,
+    "posts": 127,
+    "link": null,
+    "likes": 0,
+    "message": "\"If you've painted before you know that we don't make mistakes -- we have happy accidents.\"",
+    "ipAddress": "127.0.0.1",
+    "slug": "happy_accidents",
+    "createdAt": "2008-06-10T01:31:43"
+  }
+}

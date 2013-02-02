@@ -137,15 +137,13 @@ describe Disqussion::Threads do
       end
 
       describe ".set" do
-        before do
-          stub_post("threads/set.json", :body => { :thread => "12345678" }).
+        it "get the correct resource" do
+          stub_get("threads/set.json", :query => {:thread => "12345678" }).
             to_return(:body => fixture("threads/set.json"), :headers => {:content_type => "application/json; charset=utf-8"})
-        end
-        
-        it "Returns an unsorted set of threads given a list of ids." do
+          
           @client.set(12345678)
-          a_post("threads/set.json", :body => { :thread => "12345678" }).
-            should have_been_made
+          
+          a_get("threads/set.json", :query => { :thread => "12345678"}).should have_been_made
         end
       end
 
