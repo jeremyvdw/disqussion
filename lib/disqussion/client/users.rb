@@ -98,7 +98,6 @@ module Disqussion
     # @option options [Integer] :cursor. Defaults to null
     # @option options [Integer] :limit. Defaults to 25. Maximum length of 100
     # @option options [Integer] :user. Defaults to null. Looks up a user by ID. You may look up a user by username using the 'username' query type.
-    # @option options [] :query. Defaults to null
     # @option options [String, Array] :include. Allows multiple. Defaults to ["user", "replies", "following" ]. Choices: user, replies, following
     # @option options [String] :anon_user. Defaults to null. Looks up an anonymous user by unique hash.
     # @example Return a list of active threads user 1234 has been active on

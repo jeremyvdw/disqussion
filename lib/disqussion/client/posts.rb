@@ -61,6 +61,26 @@ module Disqussion
       options[:post] = args.first
       response = get('posts/details', options)
     end
+
+    # Returns the hierarchal tree of a post (all parents).
+    # @accessibility: public key, secret key
+    # @methods: GET
+    # @format: json, jsonp
+    # @authenticated: false
+    # @limited: false
+    # @param post [Integer] Post ID
+    # @param options [Hash] A customizable set of options.
+    # @option options [Integer, String] :related. Allows multiple. Defaults to []. You may specify relations to include with your response. Choices: forum, thread.
+    # @option options [Integer] :depth. Defaults to 10. Minimum value of 1 and maximum value of 10. 
+    # @return [Hashie::Rash] hierarchal tree of a post (all parents).
+    # @example Return hierarchal tree for post 193673
+    #   Disqussion::Client.posts.getContext(193673)
+    # @see: http://disqus.com/api/3.0/posts/getContext.json
+    def getContext(*args)
+      options = args.last.is_a?(Hash) ? args.pop : {}
+      options[:post] = args.first
+      response = get('posts/getContext', options)
+    end
     
     # Highlights a post.
     # @accessibility: public key, secret key
@@ -104,6 +124,32 @@ module Disqussion
     def list(*args)
       options = args.last.is_a?(Hash) ? args.pop : {}
       response = get('posts/list', options)
+    end
+
+
+    # Returns a list of the most popular posts
+    # @accessibility: public key, secret key
+    # @methods: GET
+    # @format: json, jsonp, rss
+    # @authenticated: false
+    # @limited: false
+    # @option options [String] :category. Defaults to null
+    # @option options [String] :interval. Defaults to "7d". Choices: 1h, 6h, 12h, 1d, 3d, 7d, 30d, 60d, 90d
+    # @option options [Array, String] :thread allow multiple. Defaults to null. Looks up a thread by ID
+    # @option options [String] :forum. Defaults to null. Defaults to all forums you moderate. Use :all to retrieve all forums.
+    # @option options [Datetime, Timestamp] :since. Unix timestamp (or ISO datetime standard). Defaults to null(Deprecated)
+    # @option options [Integer, String] :related. Allows multiple. Defaults to []. You may specify relations to include with your response. Choices: forum, thread
+    # @option options [Integer] :limit. Defaults to 25. Maximum value of 100
+    # @option options [Integer] :offset. Defaults to 0
+    # @option options [String] :query, Defualts to null
+    # @option options [String, Array] :include. Allows multiple. Defaults to ["approved"]. Choices: unapproved, approved, spam, deleted, flagged
+    # @option options [String] :order. Defaults to "popular". Choices: popular, best
+    # @example list popular posts with forum bobross
+    #   Disqussion::Client.posts.listPopular("bobross")
+    # @see: http://disqus.com/api/3.0/posts/listPopular.json
+    def listPopular(*args)
+      options = args.last.is_a?(Hash) ? args.pop : {}
+      response = get('posts/listPopular', options)
     end
     
     # Deletes the requested post(s).
@@ -189,6 +235,29 @@ module Disqussion
       options = args.last.is_a?(Hash) ? args.pop : {}
       options[:post] = args.first
       response = post('posts/unhighlight', options)
+    end
+
+    # Updates information on a post.
+    # @accessibility: public key, secret key
+    # @methods: POST
+    # @format: json, jsonp
+    # @authenticated: true
+    # @limited: false
+    # @param post [Integer] Looks up a post by ID.    
+    # @param message [String] String of the message
+    # @return [Hashie::Rash] Updated information on the post.
+    # @example Message for post ID 12345678
+    #   Disqussion::Client.posts.update(12345678,"Hello")
+    # @see: http://disqus.com/api/3.0/posts/update.json
+    def update(*args)
+      options = args.last.is_a?(Hash) ? args.pop : {}
+      if args.length == 2
+        options.merge!(:post => args[0])
+        options.merge!(:message => args[1])
+        response = post('posts/update', options)
+      else
+        puts "#{Kernel.caller.first}: posts.update expects 2 arguments: post ID and message"
+      end
     end
     
     # Register a vote for a post.
