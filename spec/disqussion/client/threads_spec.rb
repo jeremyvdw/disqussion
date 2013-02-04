@@ -135,7 +135,18 @@ describe Disqussion::Threads do
             should have_been_made
         end
       end
-      
+
+      describe ".set" do
+        it "get the correct resource" do
+          stub_get("threads/set.json", :query => {:thread => "12345678" }).
+            to_return(:body => fixture("threads/set.json"), :headers => {:content_type => "application/json; charset=utf-8"})
+          
+          @client.set(12345678)
+          
+          a_get("threads/set.json", :query => { :thread => "12345678"}).should have_been_made
+        end
+      end
+
       describe ".update" do
         pending
       end

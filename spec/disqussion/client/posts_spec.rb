@@ -47,7 +47,16 @@ describe Disqussion::Posts do
       end
       
       describe ".getContext" do
-        pending
+        before do 
+          stub_get("posts/getContext.json", :query => { :post => "3" }).
+            to_return(:body => fixture("posts/getContext.json"), :headers => {:content_type => "application/json; charset=utf-8"})
+        end
+
+        it "Returns the hierarchal tree of a post (all parents)" do
+          @client.getContext(3)
+          a_get("posts/getContext.json", :query => { :post => "3" }).
+            should have_been_made
+        end
       end
       
       describe ".highlight" do
@@ -77,7 +86,16 @@ describe Disqussion::Posts do
       end
       
       describe ".listPopular" do
-        pending
+        before do
+          stub_get("posts/listPopular.json", :query => { :forum => "bobross"}).
+            to_return(:body => fixture("posts/listPopular.json"), :headers => {:content_type => "application/json; charset=utf-8"})
+        end
+
+        it "Returns a list of posts ordered by the number of likes recently." do
+          @client.listPopular(:forum => "bobross")
+          a_get("posts/listPopular.json", :query => { :forum => "bobross" }).
+            should have_been_made
+        end
       end
       
       describe ".remove" do
@@ -144,7 +162,20 @@ describe Disqussion::Posts do
             should have_been_made
         end
       end
-      
+
+      describe ".update" do
+        before do
+          stub_post("posts/update.json", :body => { :post => "12345678", :message => "Hello"}).
+            to_return(:body => fixture("posts/update.json"), :headers => {:content_type => "application/json; charset=utf-8"})
+        end
+
+        it "Updates information on a post" do
+          @client.update(12345678, "Hello")
+          a_post("posts/update.json", :body => { :post => "12345678", :message => "Hello"}).
+            should have_been_made
+        end
+      end
+
       describe ".vote" do
         before do
           stub_post("posts/vote.json", :body => { :vote => "1", :post => "199088808" }).

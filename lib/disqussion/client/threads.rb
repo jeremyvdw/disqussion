@@ -194,6 +194,24 @@ module Disqussion
       response = post('threads/restore', options)
     end
 
+    # Returns an unsorted set of threads given a list of ids.
+    # @accessibility: public key, secret key
+    # @methods: GET
+    # @format: json, jsonp
+    # @authenticated: false
+    # @limited: false 
+    # @option options [String] :related. Defaults to []. You may specify relations to include with your response. Choices forum, author, category 
+    # @option options [String] :forum. Defaults to null. Looks up a forum by ID (aka short name). 
+    # @example Set thread 12345678
+    #   Disqussion::Client.threads.set(12345678)
+    # @see: http://disqus.com/api/3.0/threads/set.json
+    def set(*args)
+      options = args.last.is_a?(Hash) ? args.pop : {}
+      thread = args.first
+      options.merge!(:thread => thread) if ([:ident, :link] & options.keys).empty?
+      response = get('threads/set', options)
+    end
+
     def subscribe(*args)
       options = args.last.is_a?(Hash) ? args.pop : {}
       response = post('threads/subscribe', options)
