@@ -1,5 +1,14 @@
 module Disqussion
   class Users < Client
+    
+
+    def checkUsername(*args)
+      options = args.last.is_a?(Hash) ? args.pop : {}
+      options[:username] = args.first
+      response = post('users/checkUsername', options)
+    end
+
+
     # Returns details of a user
     # @accessibility: public key, secret key
     # @methods: GET

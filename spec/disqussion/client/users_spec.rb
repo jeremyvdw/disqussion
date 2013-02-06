@@ -6,6 +6,17 @@ describe Disqussion::Users do
       before do
         @client = Disqussion::Client.users
       end
+
+      describe ".checkUsername" do
+        it "checks username" do
+          stub_post("users/checkUsername.json", :body => {:username => "saxonbeat"}).
+            to_return(:body => fixture("users/checkUsername.json"), :headers => {:content_type => "application/json; charset=utf-8"})
+          
+          @client.checkUsername("saxonbeat")
+
+          a_post("users/checkUsername.json", :body => {:username => "saxonbeat"}).should have_been_made
+        end
+      end
       
       describe ".details" do
         it "get the correct resource" do
