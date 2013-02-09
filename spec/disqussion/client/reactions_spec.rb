@@ -6,6 +6,19 @@ describe Disqussion::Reactions do
       before do
         @client = Disqussion::Client.reactions
       end
+
+      describe ".details" do
+        before do
+          stub_get("reactions/details.json", :query => { }).
+            to_return(:body => fixture("reactions/details.json"), :headers => {:content_type => "application/json; charset=utf-8"})
+        end
+
+        xit "returns reaction details" do
+          @client.details()
+          a_get("reactions/details.json", :query => { }).
+            should have_been_made
+        end
+      end
       
       describe ".domains" do
         before do
@@ -29,6 +42,19 @@ describe Disqussion::Reactions do
         it "returns ???" do
           @client.ips
           a_get("reactions/ips.json", :query => { }).
+            should have_been_made
+        end
+      end
+
+      describe ".list" do
+        before do
+          stub_get("reactions/list.json", :query => {:forum => "the88"}).
+            to_return(:body => fixture("reactions/list.json"), :headers => {:content_type => "application/json; charset=utf-8"})
+        end
+
+        it "returns a list of reactions for a forum" do
+          @client.list("the88")
+          a_get("reactions/list.json", :query => {:forum => "the88" }).
             should have_been_made
         end
       end
