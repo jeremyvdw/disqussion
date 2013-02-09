@@ -1,7 +1,15 @@
 module Disqussion
   class Users < Client
-    
-
+    # Updates username for the user, fails if username does not meet requirements, or is taken by another user 
+    # @accessibility: public key, secret key
+    # @methods: POST
+    # @format: json, jsonp
+    # @authenticated: true
+    # @limited: false
+    # @param username [String] A Disqus username. Defaults to null. Minimum length of 3 and Maximum length of 30
+    # @example Updates username for the user for 'the88' to 'saxonbeat'
+    #   Disqussion::Client.users.checkusername(:username => 'saxonbeat')
+    # @see: http://disqus.com/api/3.0/users/checkUsername.json
     def checkUsername(*args)
       options = args.last.is_a?(Hash) ? args.pop : {}
       options[:username] = args.first
