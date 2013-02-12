@@ -46,6 +46,19 @@ describe Disqussion::Forums do
         end
       end
       
+      describe ".listMostActiveUsers" do
+        before do
+          stub_get("forums/listMostActiveUsers.json", :query => { :forum => "the88" }).
+            to_return(:body => fixture("forums/listMostActiveUsers.json"), :headers => {:content_type => "application/json; charset=utf-8"})
+        end
+        
+        it "returns details on the requested list of users." do
+          @client.listMostActiveUsers("the88")
+          a_get("forums/listMostActiveUsers.json", :query => { :forum => "the88" }).
+            should have_been_made
+        end
+      end
+      
       describe ".listCategories" do
         before do
           stub_get("forums/listCategories.json", :query => { :forum => "the88" }).
