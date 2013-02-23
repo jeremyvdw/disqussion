@@ -293,12 +293,10 @@ module Disqussion
     # @example Updates thread 1
     #   Disqussion::Client.threads.update(1,"bobross","Hello World")
     # @see: http://disqus.com/api/3.0/threads/update.json
-		def update(*args)
-			options = args.last.is_a?(Hash) ? args.pop : {}
-      thread = args.first
-      options.merge!(:thread => thread) 
-			response = post('threads/update', options)
-		end
+	# def update(*args)
+	#    options = args.last.is_a?(Hash) ? args.pop : {}
+	#    response = post('threads/update', options)
+	# end
 
     # Register a vote on a thread.
     # @accessibility: public key, secret key

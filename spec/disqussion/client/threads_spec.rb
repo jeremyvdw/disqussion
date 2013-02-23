@@ -186,9 +186,9 @@ describe Disqussion::Threads do
         before do
           stub_post("threads/update.json", :body => { :thread => "1", :title => "Hello World" }).
             to_return(:body => fixture("threads/update.json"), :headers => {:content_type => "application/json; charset=utf-8"})
-          end
+        end
 
-        it "updates a thread" do
+        xit "updates a thread" do
           @client.update(1, "Hello World")
           a_post("threads/update.json", :body => { :thread => "1", :title => "Hello World" }).
             should have_been_made

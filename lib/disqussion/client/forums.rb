@@ -61,6 +61,18 @@ module Disqussion
       options[:forum] = args.first
       response = get('forums/listCategories', options)
     end
+
+    def listModerators(*args)
+    	options = args.last.is_a?(Hash) ? args.pop : {}
+    	options[:forum] = args.first
+    	response = get('forums/listModerators', options)
+    end
+
+    def listMostActiveUsers(*args)
+    	options = args.last.is_a?(Hash) ? args.pop : {}
+    	options[:forum] = args.first
+    	response = get('forums/listMostActiveUsers', options)
+    end
     
     # Returns a list of users active within a forum ordered by most likes received.
     # @accessibility: public key, secret key
