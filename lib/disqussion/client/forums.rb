@@ -62,12 +62,38 @@ module Disqussion
       response = get('forums/listCategories', options)
     end
 
+    # Returns a list of Moderators for the forum
+    # @accessibility: public key, secret key
+    # @methods: GET
+    # @format: json, jsonp
+    # @authenticated: true
+    # @limited: false
+    # @param forum [String] Forum ID (aka short name).
+    # @return [Hashie::Rash] Details on the requested list of moderators.
+    # @example Return list of moderators within forum 'the88'
+    #   Disqussion::Client.forums.listModerators("the88")
+    # @see: http://disqus.com/api/3.0/forums/listModerators.json
     def listModerators(*args)
     	options = args.last.is_a?(Hash) ? args.pop : {}
     	options[:forum] = args.first
     	response = get('forums/listModerators', options)
     end
 
+    # Returns a list of the most active users for the forum
+    # @accessibility: public key, secret key
+    # @methods: GET
+    # @format: json, jsonp
+    # @authenticated: false
+    # @limited: false
+    # @param forum [String] Forum ID (aka short name).
+    # @return [Hashie::Rash] Details on the requested list of most active users.
+    # @param options [Hash] A customizable set of options.
+    # @option options [Integer] :cursor. Defaults to null
+    # @option options [Integer] :limit. Defaults to 25. Maximum value of 100
+    # @option options [String] :order. Defaults to "asc". Choices: asc, desc
+    # @example Return list of most active users within forum 'the88'
+    #   Disqussion::Client.forums.listMostActiveUsers("the88")
+    # @see: http://disqus.com/api/3.0/forums/listMostActiveUsers.json
     def listMostActiveUsers(*args)
     	options = args.last.is_a?(Hash) ? args.pop : {}
     	options[:forum] = args.first
