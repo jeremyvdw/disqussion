@@ -6,6 +6,19 @@ describe Disqussion::Forums do
       before do
         @client = Disqussion::Client.forums
       end
+
+      describe ".addModerator" do
+        before do
+          stub_post("forums/addModerator.json", :body => { :user => "boom", :forum => "the88"}).
+            to_return(:body => fixture("forums/addModerator.json"), :headers => {:content_type => "application/json; charset=utf-8"})
+        end
+
+        xit "adds a moderator to a forum" do
+          @client.addModerator("boom", "the88")
+          a_post("forums/addModerator.json", :body => { :user => "boom", :forum => "the88"}).
+            should have_been_made
+          end
+        end
       
       describe ".create" do
         before do
@@ -32,6 +45,32 @@ describe Disqussion::Forums do
             should have_been_made
         end
       end
+
+      describe ".listModerators" do
+        before do 
+          stub_get("forums/listModerators.json", :query => { :forum => "the88" }).
+            to_return(:body => fixture("forums/listModerators.json"), :headers => {:content_type => "application/json; charset=utf-8"})
+        end
+
+        it "returns a list of moderators of the forum" do
+          @client.listModerators("the88")
+          a_get("forums/listModerators.json", :query => { :forum => "the88" }).
+            should have_been_made
+        end
+      end
+
+      describe ".listMostActiveUsers" do 
+        before do
+          stub_get("forums/listMostActiveUsers.json", :query => { :forum => "the88" }).
+            to_return(:body => fixture("forums/listMostActiveUsers.json"), :headers => {:content_type => "application/json; charset=utf-8"})
+        end
+
+        it "returns a list of the most active users on a forum" do
+          @client.listMostActiveUsers("the88")
+          a_get("forums/listMostActiveUsers.json", :query => { :forum => "the88" }).
+            should have_been_made
+        end
+      end
       
       describe ".listMostLikedUsers" do
         before do
@@ -42,19 +81,6 @@ describe Disqussion::Forums do
         it "returns details on the requested list of users." do
           @client.listMostLikedUsers("the88")
           a_get("forums/listMostLikedUsers.json", :query => { :forum => "the88" }).
-            should have_been_made
-        end
-      end
-      
-      describe ".listMostActiveUsers" do
-        before do
-          stub_get("forums/listMostActiveUsers.json", :query => { :forum => "the88" }).
-            to_return(:body => fixture("forums/listMostActiveUsers.json"), :headers => {:content_type => "application/json; charset=utf-8"})
-        end
-        
-        it "returns details on the requested list of users." do
-          @client.listMostActiveUsers("the88")
-          a_get("forums/listMostActiveUsers.json", :query => { :forum => "the88" }).
             should have_been_made
         end
       end

@@ -6,6 +6,19 @@ describe Disqussion::Threads do
       before do
         @client = Disqussion::Client.threads
       end
+
+      describe ".create" do
+        before do
+          stub_post("threads/create.json", :body => { :forum => "bobross", :title => "Hello World" }).
+            to_return(:body => fixture("threads/create.json"), :headers => {:content_type => "application/json; charset=utf-8"})
+          end
+
+        it "creates a new thread" do
+          @client.create("bobross","Hello World")
+          a_post("threads/create.json", :body => { :forum => "bobross", :title => "Hello World" }).
+            should have_been_made
+        end
+      end
       
       describe ".close" do
         before do
@@ -77,7 +90,16 @@ describe Disqussion::Threads do
       end
       
       describe ".listPopular" do
-        pending
+        before do 
+          stub_get("threads/listPopular.json", :query => {:forum => "facebook" }).
+            to_return(:body => fixture("threads/listPopular.json"), :headers => {:content_type => "application/json; charset=utf-8"})
+          end
+
+          it "returns a list of the most popular posts in a interval" do
+            @client.listPopular(:forum => "facebook")
+            a_get("threads/listPopular.json", :query => { :forum => "facebook"}).
+              should have_been_made
+          end
       end
       
       describe ".listPosts" do
@@ -161,7 +183,16 @@ describe Disqussion::Threads do
       end
 
       describe ".update" do
-        pending
+        before do
+          stub_post("threads/update.json", :body => { :thread => "1", :title => "Hello World" }).
+            to_return(:body => fixture("threads/update.json"), :headers => {:content_type => "application/json; charset=utf-8"})
+        end
+
+        xit "updates a thread" do
+          @client.update(1, "Hello World")
+          a_post("threads/update.json", :body => { :thread => "1", :title => "Hello World" }).
+            should have_been_made
+        end
       end
       
       describe ".vote" do

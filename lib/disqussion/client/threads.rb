@@ -1,5 +1,35 @@
 module Disqussion
   class Threads < Client
+  	
+  	# Creates a thread
+    # @accessibility: public key, secret key
+    # @methods: POST
+    # @format: json, jsonp
+    # @authenticated: true
+    # @limited: false
+    # @param forum [String] Looks up a forum by ID (aka forum shortname).
+    # @param title [String] Title of the the new thread
+    # @return [Hashie::Rash] New thread is created.
+    # @option options [Integer] :category. Defaults to null
+    # @option options [String] :url. Defaults to null. URL (defined by RFC 3986). Maximum length of 500
+    # @option options [Integer] :date. Defaults to null. Unix timestamp (or ISO datetime standard)
+    # @option options [String] :message Defaults to null
+    # @option options [Integer] :identifier. Defaults to null. Maximum length of 300
+    # @option options [String] :slug. Defaults to null. Alpha-numeric slug. Maximum length of 200
+    # @example Create thread "Hello World"
+    #   Disqussion::Client.threads.create("bobross","Hello World")
+    # @see: http://disqus.com/api/3.0/threads/create.json
+    def create(*args)
+    	options = args.last.is_a?(Hash) ? args.pop : {}
+    	if args.length == 2 
+    		options.merge!(:forum => args[0])
+    		options.merge!(:title => args[1])
+    	 	response = post('threads/create', options)
+      else
+        puts "#{Kernel.caller.first}: threads.create expects 2 arguments: forum name (aka forum short name) and title for the thread"
+      end
+    end
+    
     # Closes a thread
     # @accessibility: public key, secret key
     # @methods: POST
@@ -108,6 +138,28 @@ module Disqussion
     def listHot(*args)
       options = args.last.is_a?(Hash) ? args.pop : {}
       response = get('threads/listHot', options)
+    end
+
+    # Returns a list of threads sorted by number of posts made since "interval". 
+    # If you are using both "category" and "forum" parameters, the forum of the category must match that as the parameter value for "forum".
+    # @accessibility: public key, secret key
+    # @methods: GET
+    # @format: json, jsonp, rss
+    # @authenticated: false
+    # @limited: false
+    # @return [Hashie::Rash] List of the most popular threads which have had the most posts in an interval.
+    # @option options [Integer] :category. Looks up a category by ID. Defualts to null.
+    # @option options [String] :interval. Defaults to "7d". Choices: 1h, 6h, 12h, 1d, 3d, 7d, 30d, 60d, 90d
+    # @option options [String] :forum. Defaults to null. Looks up a forum by ID (aka short name)
+    # @option options [String, Array] :related allows multiple. Defaults to []. You may specify relations to include with your response. Choices: forum
+    # @option options [Integer] :limit. Defaults to 25. Maximum length of 100
+    # @option options [Boolean] :with_top_post. Defaults to false
+    # @example Return list of the most populat threads in a given interval
+    #   Disqussion::Client.threadslistPopular(:forum => "bobross")
+    # @see: http://disqus.com/api/3.0/threads/listPopular.json
+    def listPopular(*args)
+    	options = args.last.is_a?(Hash) ? args.pop : {}
+    	response = get('threads/listPopular', options)
     end 
 
     # Returns a list of posts within a thread.
@@ -221,6 +273,30 @@ module Disqussion
       options = args.last.is_a?(Hash) ? args.pop : {}
       response = post('threads/unsubscribe', options)
     end
+
+    # Updates a thread
+    # @accessibility: public key, secret key
+    # @methods: POST
+    # @format: json, jsonp
+    # @authenticated: true
+    # @limited: false
+    # @param thread [Integer] Looks up by Thread ID
+    # @return [Hashie::Rash] Updates a thread.
+    # @option options [Integer] :category. Defaults to null
+    # @option options [String] :forum. Looks up a forum by ID (aka forum shortname)
+    # @option options [String] :title. Defaults to null. Maximum length of 200
+    # @option options [String] :url. Defaults to null. URL (defined by RFC 3986). Maximum length of 500
+    # @option options [Integer] :date. Defaults to null. Unix timestamp (or ISO datetime standard)
+    # @option options [String] :message Defaults to null
+    # @option options [Integer] :identifier. Defaults to null. Maximum length of 300
+    # @option options [String] :slug. Defaults to null. Alpha-numeric slug. Maximum length of 200
+    # @example Updates thread 1
+    #   Disqussion::Client.threads.update(1,"bobross","Hello World")
+    # @see: http://disqus.com/api/3.0/threads/update.json
+	# def update(*args)
+	#    options = args.last.is_a?(Hash) ? args.pop : {}
+	#    response = post('threads/update', options)
+	# end
 
     # Register a vote on a thread.
     # @accessibility: public key, secret key
