@@ -1,7 +1,7 @@
 PATH
   remote: .
   specs:
-    disqussion (0.0.6)
+    disqussion (0.0.7)
       faraday (~> 0.8)
       faraday_middleware (>= 0.9)
       hashie (~> 1.2)

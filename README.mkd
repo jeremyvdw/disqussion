@@ -21,6 +21,19 @@ Continuous Integration
 [![Build Status](https://travis-ci.org/jeremyvdw/disqussion.png)](http://travis-ci.org/jeremyvdw/disqussion)
 [![Dependency Status](https://gemnasium.com/jeremyvdw/disqussion.png)](https://gemnasium.com/jeremyvdw/disqussion)
 
+
+What's in 0.0.7?
+----------------------
+* Added list of forum moderators (@shabankarumba)
+* Added list of popular hreads, create threads (@shabankarumba)
+* Added list and details of reactions (@shabankarumba)
+* Added hierarchal tree of a post, list of the most popular posts and informations on a post (@shabankarumba)
+* Added list of users a user is being followed by and users a user is following, list of forums a user has been active on recenty (@shabankarumba)
+* Added set of threads given a list of ids (@shabankarumba)
+* Added list of threads sorted by hotness (@shabankarumba)
+* Added check username availability (@shabankarumba)
+* Added list of most active users (@m0dd3r)
+
 What's in 0.0.6?
 ----------------------
 * Added subscribe and unsubscribe API calls (@wbrady)
@@ -149,5 +162,4 @@ This gem is based on the work by John Nunemaker, Wynn Netherland, Erik Michaels-
 
 Copyright
 ---------
-Copyright (c) 2011 Jérémy Van de Wyngaert.
 See [LICENSE](https://github.com/jeremyvdw/disqussion/blob/master/LICENSE.mkd) for details.
